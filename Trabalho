@@ -1,0 +1,116 @@
+class Basico:
+    def __init__(self, tipo, cor):
+        self._tipo = tipo		# tipo do tênis (ex: esportivo, social e etc.).
+        self._cor = cor	    # cor principal do tênis (ex: azul, preto, branco e etc.).
+    @property
+    def tipo(self):
+        return self._tipo
+    @property
+    def cor(self):
+        return self._cor
+    @tipo.setter
+    def tipo(self, tipo):
+        self._tipo = tipo
+    @cor.setter
+    def cor(self, cor):
+        self._cor = cor
+    
+class PreConfeccao:
+    def __init__(self, tamanho, material, basico):
+        self._tamanho = tamanho			  # tamanho do tênis (ex: 42, 43, 40 e etc.). 
+        self._material = material			# material principal usado (ex: tecido, malha, couro e etc.).
+        self._basico = basico			    # representa o basico escolhido inicialmente.
+    @property
+    def material(self):
+        return self._material
+    @property
+    def tamanho(self):
+        return self._tamanho
+    @property
+    def basico(self):
+        return self._basico
+    @material.setter
+    def material(self, material):
+        self._material = material
+    @tamanho.setter
+    def tamanho(self, tamanho):
+        self._tamanho = tamanho
+    @basico.setter
+    def basico(self, basico):
+        self._basico = basico
+
+class Confeccao:
+    def __init__(self, corcadarco, sola, preconfeccao):
+        self._corcadarco = corcadarco          # cor do cadarço (ex: branco, preto, vermelho).
+        self._sola = sola                      # tipo de sola (ex: borracha, EVA, couro).
+        self._preconfeccao = preconfeccao      # representa o tamanho e material principal da PreConfeccao.
+    @property
+    def corcadarco(self):
+        return self._corcadarco
+    @property
+    def sola(self):
+        return self._sola
+    @property
+    def preconfeccao(self):
+        return self._preconfeccao
+    @corcadarco.setter
+    def corcadarco(self, corcadarco):
+        self._corcadarco = corcadarco
+    @sola.setter
+    def sola(self, sola):
+        self._sola = sola
+    @preconfeccao.setter
+    def preconfeccao(self, preconfeccao):
+        self._preconfeccao = preconfeccao
+
+class Tenis:
+  def __init__(self, preco, quantidade, confeccao):
+    self._preco = preco		              # preço final do Tênis.
+    self._quantidade = quantidade       # quantidade frabricada.
+    self._confeccao = confeccao	        # representa o tipo, os materiais e as cores decididas até a etapa da confecção.
+  @property
+  def preco(self):
+    return self._preco
+  @property
+  def quantidade(self):
+    return self._quantidade  
+  @property
+  def confeccao(self):
+    return self._confeccao
+  @preco.setter
+  def preco(self, preco):
+    self._preco = preco
+  @quantidade.setter
+  def quantidade(self, quantidade):
+    self._quantidade = quantidade  
+  @confeccao.setter
+  def confeccao(self, confeccao):
+    self._confeccao = confeccao
+  def mostrar(self):
+    print('Preço:', self.preco)
+    print('Quantidade:', self.quantidade)
+    print('Confecção:')
+    print('Cor do cadarço:', self.confeccao.corcadarco)
+    print('sola:', self.confeccao.sola)
+    print('Pré-Confecção:')
+    print('Tamanho:', self.confeccao.preconfeccao.tamanho)
+    print('Material:', self.confeccao.preconfeccao.material)
+    print('Escolhas Basicas: ')
+    print('Tipo de Tênis:', self.confeccao.preconfeccao.basico.tipo)
+    print('Cor Principal do Tênis:', self.confeccao.preconfeccao.basico.cor)
+
+# principal
+basico = Basico('Esportivo', 'Cinza')
+preconfeccao = PreConfeccao(43, 'Poliéster', basico)
+confeccao = Confeccao('Cinza', 'EVA', preconfeccao)
+auto = Tenis('R$300,00', '200 Pares', confeccao)
+auto.mostrar()
+auto.preco = 'R$450,00'
+auto.quantidade = '500 Pares'
+basico.tipo = 'Social'
+basico.cor = 'Preto'
+preconfeccao.tamanho = 42
+preconfeccao.material = 'Couro Macio'
+confeccao.corcadarco = 'Preto'
+confeccao.sola = 'Borracha'
+auto.mostrar()
