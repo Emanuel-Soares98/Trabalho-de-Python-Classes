@@ -98,6 +98,7 @@ class Tenis:
     print('Escolhas Basicas: ')
     print('Tipo de Tênis:', self.confeccao.preconfeccao.basico.tipo)
     print('Cor Principal do Tênis:', self.confeccao.preconfeccao.basico.cor)
+    print('\n')
 
 # principal
 basico = Basico('Esportivo', 'Cinza')
